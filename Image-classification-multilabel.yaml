@@ -5,11 +5,10 @@ Parameters:
         Default: 'Image-classification-multilabel'
     codeRepository:
         Type: String
-        Default: https://github.com/jamp00/BreastCancerPrediction.git
+        Default: https://github.com/jamp00/Image-Clasification.git
 
 
 Resources:
-
 #------------------ LAMBDA ------------------#
     LambdaFunction:
         Type: 'AWS::Lambda::Function'
@@ -176,33 +175,33 @@ Resources:
             VolumeSizeInGB: 20
     
     ExecutionRole: 
-      Type: AWS::IAM::Role
-      Properties: 
-        AssumeRolePolicyDocument: 
-          Version: "2012-10-17"
-          Statement: 
-            - 
-              Effect: "Allow"
-              Principal: 
-                Service: 
-                  - "sagemaker.amazonaws.com"
-              Action: 
-                - "sts:AssumeRole"
-        Path: "/"
-        ManagedPolicyArns:
-          - arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
-        Policies:
-          - 
-            PolicyName: "s3_access"
-            PolicyDocument: 
-              Version: "2012-10-17"
-              Statement: 
-                - 
-                  Effect: "Allow"
-                  Action: 
-                    - "s3:PutBucketPolicy"
-                    - "s3:DeleteBucket"
-                  Resource: "arn:aws:s3:::sagemaker-*"                
+        Type: AWS::IAM::Role
+        Properties: 
+            AssumeRolePolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                    - 
+                      Effect: "Allow"
+                      Principal: 
+                        Service: 
+                          - "sagemaker.amazonaws.com"
+                      Action: 
+                        - "sts:AssumeRole"
+            Path: "/"
+            ManagedPolicyArns:
+              - arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
+            Policies:
+              - 
+                PolicyName: "s3_access"
+                PolicyDocument: 
+                  Version: "2012-10-17"
+                  Statement: 
+                    - 
+                      Effect: "Allow"
+                      Action: 
+                        - "s3:PutBucketPolicy"
+                        - "s3:DeleteBucket"
+                      Resource: "arn:aws:s3:::sagemaker-*"                
 # END NOTEBOOK ----------------------------------------------------------
 
 
