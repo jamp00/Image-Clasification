@@ -185,6 +185,14 @@ Resources:
         Properties:
           RestApiId: !Ref RestApi
 
+#------------------ S3 Bucket ------------------#
+
+    S3Bucket:
+        Type: AWS::S3::Bucket
+        DeletionPolicy: Retain
+        Properties:
+            BucketName: multi-label-classification
+
 
 #------------------ NOTEBOOK ------------------#
     NotebookInstance:
